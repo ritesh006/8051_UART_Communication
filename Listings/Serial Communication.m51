@@ -1,0 +1,138 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    11/07/2021  09:18:02  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\UART.obj TO .\Objects\Serial Communication PRINT (.\Listing
+>> s\Serial Communication.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\UART.obj (UART)
+
+
+LINK MAP OF MODULE:  .\Objects\Serial Communication (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     002DH     UNIT         ?PR?MAIN?UART
+            CODE    082DH     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Serial Communication (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?UART
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Serial Communication (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:082DH         SEGMENT       ?C_C51STARTUP
+  I:0008H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/07/2021  09:18:02  PAGE 2
+
+
+  C:0830H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:082DH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:082DH         LINE#         133
+  C:082FH         LINE#         134
+  C:0830H         LINE#         135
+  C:0831H         LINE#         136
+  C:0833H         LINE#         185
+  C:0836H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        UART
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00B0H         PUBLIC        P3
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  C:0800H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  D:008DH         PUBLIC        TH1
+  B:0088H.6       PUBLIC        TR1
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:0800H         LINE#         13
+  C:0800H         LINE#         14
+  C:0800H         LINE#         16
+  C:0803H         LINE#         29
+  C:0806H         LINE#         42
+  C:0809H         LINE#         46
+  C:080BH         LINE#         49
+  C:080BH         LINE#         50
+  C:080BH         LINE#         53
+  C:080EH         LINE#         54
+  C:0811H         LINE#         55
+  C:0813H         LINE#         57
+  C:0816H         LINE#         58
+  C:0819H         LINE#         59
+  C:081BH         LINE#         61
+  C:081EH         LINE#         62
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  11/07/2021  09:18:02  PAGE 3
+
+
+  C:0821H         LINE#         63
+  C:0823H         LINE#         69
+  C:0826H         LINE#         70
+  C:0829H         LINE#         71
+  C:082BH         LINE#         75
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        UART
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 003CH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=60
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

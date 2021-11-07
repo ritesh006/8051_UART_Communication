@@ -1,0 +1,109 @@
+C51 COMPILER V9.60.0.0   UART                                                              11/07/2021 09:18:01 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE UART
+OBJECT MODULE PLACED IN .\Objects\UART.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE UART.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\UART
+                    -.lst) TABS(2) OBJECT(.\Objects\UART.obj)
+
+line level    source
+
+   1          /* ---------------------------------------------------------
+   2              Here we are going to program a serial communication 
+   3              using UART protocol and display data on serial window
+   4              P89V51RD2 controller used
+   5              at 9600 baud rate 
+   6              pin 10 and 11 rx and tx pin used 
+   7              P3.0 n P3.1
+   8          ---------------------------------------------------------*/
+   9          
+  10          #include <reg52.h>   /* register address included with header file */
+  11          
+  12          /* main start */
+  13          void main() 
+  14          {
+  15   1        
+  16   1        TMOD = 0x20;      
+  17   1        
+  18   1        /*----------------------------------------------------------------------------------- 
+  19   1        timer 1 mode 2 initialize in TMOD register M1 = 1 , M0 = 0, 8bit auto reload mode
+  20   1           
+  21   1        Bit position :    bit7  bit6  bit5  bit4 | bit3  bit2  bit1  bit0
+  22   1        bit name     :    Gate  C/T    M1    M0  | GATE   C/T  M1    M0
+  23   1        bit value set:      0    0      1     0  |   0     0    0     0                             
+  24   1                                        2 in hex |          0 in hex
+  25   1        TMOD = 0X20         
+  26   1        ------------------------------------------------------------------------------------*/    
+  27   1        
+  28   1        
+  29   1        SCON = 0x50;    
+  30   1        
+  31   1        /*------------------------------------------------------------------------------------
+  32   1         UART mode1 initialize in SCON register, SM0 = 0, SM1= 1, 8-bit UART mode
+  33   1        
+  34   1        Bit position :    bit7  bit6  bit5  bit4 | bit3  bit2  bit1  bit0
+  35   1        bit name     :    SM0    SM1   SM2   REN | TB8   RB8    TI    RI
+  36   1        bit value set:     0      1     X     1  |  0     0     0     0
+  37   1                                       5 in hex  |   0 in hex                                   
+  38   1        SCON = 0x50; 
+  39   1        REN = 1 ; for receiver enable 
+  40   1        ------------------------------------------------------------------------------------*/
+  41   1      
+  42   1        TH1 = 0xFD;  
+  43   1        
+  44   1        /* initialize baud rate frequency to 9600 */
+  45   1        
+  46   1        TR1 = 1;  
+  47   1        /* timer one starts */
+  48   1        
+  49   1          while(1)      /* infitite loop starts */
+  50   1          {
+  51   2            /* Transmission code */
+  52   2            
+  53   2            SBUF = 'L';       /* putting ASCII value of 'L' in sbuf register */
+  54   2            while(TI==0);     /* while TI bit is eqal to 0 transmission will executed */
+C51 COMPILER V9.60.0.0   UART                                                              11/07/2021 09:18:01 PAGE 2   
+
+  55   2            TI = 0;           /* after the transmission TI bit set to 1 so we have clear the bit manually */
+  56   2            
+  57   2            SBUF = 'A';       /* putting ASCII value of 'A' in sbuf register */
+  58   2            while(TI == 0);     /* while TI bit is eqal to 0 transmission will executed */
+  59   2            TI = 0;           /* after the transmission TI bit set to 1 so we have clear the bit manually */
+  60   2            
+  61   2            SBUF = 'B';       /* putting ASCII value of 'B' in sbuf register */
+  62   2            while(TI == 0);     /* while TI bit is eqal to 0 transmission will executed */
+  63   2            TI = 0;           /* after the transmission TI bit set to 1 so we have clear the bit manually */
+  64   2            
+  65   2            /* transmitter code ends */
+  66   2            
+  67   2            
+  68   2              /* receiver code starts */
+  69   2              while(RI == 0); /* while receiving data we have moniter RI bit continuesly */  
+  70   2              P1 = SBUF;      /* received data in SBUF copied to the Port 1 */
+  71   2              RI = 0;         /* after the receiveing a data RI bit set to 1 so we have to celar */
+  72   2              
+  73   2              /* receiver code ends */
+  74   2              
+  75   2          } 
+  76   1          /* while loop ends here */
+  77   1              
+  78   1        
+  79   1        
+  80   1        
+  81   1      }
+  82          
+  83          /* main end */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     45    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
