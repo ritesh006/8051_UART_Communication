@@ -21,7 +21,7 @@ void main()
 	Bit position :		bit7  bit6  bit5  bit4 | bit3  bit2  bit1  bit0
 	bit name		 :		Gate  C/T	   M1	   M0	 | GATE   C/T	 M1	   M0
 	bit value set:			0    0      1     0  |   0     0    0     0															
-																	2 in hex |          0 in hex
+						    2 in hex |          0 in hex
   TMOD = 0X20 				
 	------------------------------------------------------------------------------------*/		
 	
@@ -34,7 +34,7 @@ void main()
 	Bit position :		bit7  bit6  bit5  bit4 | bit3  bit2  bit1  bit0
 	bit name     :		SM0    SM1   SM2   REN | TB8   RB8    TI    RI
 	bit value set:		 0      1     X     1  |  0     0     0     0
-                                 5 in hex  |   0 in hex                                   
+                                             5 in hex  |   0 in hex                                   
 	SCON = 0x50; 
 	REN = 1 ; for receiver enable 
 	------------------------------------------------------------------------------------*/
