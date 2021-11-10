@@ -6,9 +6,9 @@ Here we are going to program a serial communication using UART protocol and disp
 	timer 1 mode 2 initialize in TMOD register M1 = 1 , M0 = 0, 8bit auto reload mode
 		 
 	Bit position :		    bit7  bit6  bit5  bit4 | bit3  bit2  bit1  bit0
-	bit name			    Gate   C/T   M1	   M0  | GATE   C/T	 M1	   M0
-	bit value set:			  0    0      1     0  |   0     0    0     0			
-										  2 in hex |          0 in hex
+	bit name		    Gate  C/T    M1    M0  | GATE   C/T	 M1	   M0
+	bit value set:		        0    0    1     0  |   0     0    0     0			
+						 2 in hex  |    0 in hex
   TMOD = 0X20 				
 	------------------------------------------------------------------------------------*/
 
